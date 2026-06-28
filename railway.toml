@@ -1,10 +1,10 @@
 [build]
 builder = "dockerfile"
-dockerfilePath = "apps/api/Dockerfile"
+dockerfilePath = "apps/web/Dockerfile"
 
 [deploy]
-startCommand = "node apps/api/dist/main.js"
-healthcheckPath = "/api/health"
+startCommand = "pnpm --filter @musician/web start -- --hostname 0.0.0.0"
+healthcheckPath = "/"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
 numReplicas = 1

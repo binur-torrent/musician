@@ -9,7 +9,10 @@
 **/coverage
 **/*.log
 .DS_Store
-apps/web
+apps/web/node_modules
+apps/web/.next
+apps/api/node_modules
+apps/api/dist
 design-system
 supabase
 DEPLOY.md
