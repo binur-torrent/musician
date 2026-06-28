@@ -131,3 +131,4 @@ Point `musician.yourdomain.com` to Vercel, then update:
 | Install button missing (iOS) | Use Safari, not Chrome in-app browser |
 | Offline play fails | Track must show **Offline** badge — re-download if needed |
 | **API deployed to Vercel** | Won't work — Vercel can't run yt-dlp/ffmpeg. Use Railway only for API |
+| **`{"message":"Cannot GET /","statusCode":404}` on Vercel URL** | Vercel is serving the **NestJS API**, not the Next.js app. In Vercel → Project Settings → **Root Directory** → set to `apps/web`, Framework **Next.js**, then redeploy. The API belongs on Railway only |
