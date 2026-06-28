@@ -123,6 +123,7 @@ Point `musician.yourdomain.com` to Vercel, then update:
 |-------|-----|
 | Railway build fails on `python3: No such file or directory` during yt-dlp install | Dockerfile must download `yt-dlp_linux` (standalone binary), not the Python script named `yt-dlp` |
 | Railway build fails on `pip3 install yt-dlp` | Fixed in latest Dockerfile — uses `yt-dlp_linux` binary instead of pip |
+| Railway build fails on `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION` | Pin pnpm in root `package.json` (`packageManager`) — Corepack was pulling pnpm 11, which blocks freshly published packages like `prettier` |
 | Railway build fails on `pnpm install` | Ensure repo root has `pnpm-lock.yaml` committed; redeploy |
 | Can't add tracks | `NEXT_PUBLIC_API_URL` must be your **Railway** URL + `/api`, not Vercel |
 | CORS error | Railway `CORS_ORIGIN` must match Vercel URL exactly (no trailing slash) |

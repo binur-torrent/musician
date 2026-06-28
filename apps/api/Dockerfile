@@ -24,6 +24,7 @@ COPY packages/shared/package.json packages/shared/tsconfig.json ./packages/share
 COPY packages/shared/src ./packages/shared/src
 
 RUN corepack enable \
+  && corepack prepare pnpm@10.27.0 --activate \
   && pnpm install --frozen-lockfile --filter @musician/api... \
   && pnpm --filter @musician/api build
 
