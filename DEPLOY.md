@@ -21,10 +21,9 @@ You need internet to **add new tracks**. Already-saved tracks play offline anywh
 2. Go to [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub**
 3. Select the `musician` repo
 4. Railway detects `railway.toml` and builds from `apps/api/Dockerfile`
-5. Add **Variables**:
+5. Add **Variables** (do **not** set `PORT` — Railway injects it automatically):
 
 ```
-PORT=3001
 CORS_ORIGIN=https://YOUR-VERCEL-URL.vercel.app
 SUPABASE_URL=https://nfuupczewbdynweumlrx.supabase.co
 SUPABASE_ANON_KEY=your-anon-key
@@ -125,6 +124,7 @@ Point `musician.yourdomain.com` to Vercel, then update:
 | Railway build fails on `pip3 install yt-dlp` | Fixed in latest Dockerfile — uses `yt-dlp_linux` binary instead of pip |
 | Railway build fails on `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION` | Pin pnpm in root `package.json` (`packageManager`) — Corepack was pulling pnpm 11, which blocks freshly published packages like `prettier` |
 | Railway build fails on `pnpm install` | Ensure repo root has `pnpm-lock.yaml` committed; redeploy |
+| Railway healthcheck fails on `/api/health` | Remove any manual `PORT` variable from Railway — the app must listen on Railway's injected `PORT`. Check **Deploy logs** for startup errors |
 | Can't add tracks | `NEXT_PUBLIC_API_URL` must be your **Railway** URL + `/api`, not Vercel |
 | CORS error | Railway `CORS_ORIGIN` must match Vercel URL exactly (no trailing slash) |
 | Google login fails | Add production callback URL in Supabase |

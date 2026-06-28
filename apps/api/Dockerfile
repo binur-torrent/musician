@@ -29,8 +29,13 @@ RUN corepack enable \
   && pnpm --filter @musician/api build
 
 ENV NODE_ENV=production
+ENV TEMP_DIR=/tmp/musician-audio
 
-# Railway injects PORT at runtime
+RUN mkdir -p /tmp/musician-audio
+
+WORKDIR /app/apps/api
+
+# Railway injects PORT at runtime — do not hardcode it in service variables
 EXPOSE 3001
 
-CMD ["node", "apps/api/dist/main.js"]
+CMD ["node", "dist/main.js"]
