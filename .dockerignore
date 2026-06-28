@@ -1,0 +1,16 @@
+.git
+.cursor
+**/node_modules
+**/.next
+**/dist
+**/.env
+**/.env.*
+!**/.env.example
+**/coverage
+**/*.log
+.DS_Store
+apps/web
+design-system
+supabase
+DEPLOY.md
+README.md

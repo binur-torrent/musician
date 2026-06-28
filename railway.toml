@@ -6,3 +6,4 @@ dockerfilePath = "apps/api/Dockerfile"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 300
 restartPolicyType = "on_failure"
+numReplicas = 1

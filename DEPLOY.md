@@ -121,8 +121,11 @@ Point `musician.yourdomain.com` to Vercel, then update:
 
 | Issue | Fix |
 |-------|-----|
-| Can't add tracks | Check `NEXT_PUBLIC_API_URL` points to Railway `/api` |
-| CORS error | Railway `CORS_ORIGIN` must match Vercel URL exactly |
+| Railway build fails on `pip3 install yt-dlp` | Fixed in latest Dockerfile — uses yt-dlp binary instead of pip |
+| Railway build fails on `pnpm install` | Ensure repo root has `pnpm-lock.yaml` committed; redeploy |
+| Can't add tracks | `NEXT_PUBLIC_API_URL` must be your **Railway** URL + `/api`, not Vercel |
+| CORS error | Railway `CORS_ORIGIN` must match Vercel URL exactly (no trailing slash) |
 | Google login fails | Add production callback URL in Supabase |
 | Install button missing (iOS) | Use Safari, not Chrome in-app browser |
 | Offline play fails | Track must show **Offline** badge — re-download if needed |
+| **API deployed to Vercel** | Won't work — Vercel can't run yt-dlp/ffmpeg. Use Railway only for API |
