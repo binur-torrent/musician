@@ -1,0 +1,14 @@
+{
+  "name": "musician",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel -r dev",
+    "dev:web": "pnpm --filter @musician/web dev",
+    "dev:api": "pnpm --filter @musician/api dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
